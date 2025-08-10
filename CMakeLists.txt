@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.19)
+
+project(SoftBody VERSION 1.0)
+
+include(FetchContent)
+
+set(BUILD_SHARED_LIBS OFF)
+FetchContent_Declare(
+ SFML
+ GIT_REPOSITORY https://github.com/SFML/SFML.git
+ GIT_TAG 2.5.1
+)
+FetchContent_MakeAvailable(SFML)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
+
+add_executable(
+ SoftBody
+ src/main.cpp
+ src/massPoint.cpp
+ src/obstacle.cpp
+ src/softbody.cpp
+)
+target_link_libraries(
+ SoftBody
+ sfml-graphics
+)
